@@ -1,0 +1,137 @@
+{
+    "cordova-plugin-console": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-console@~1.0.6"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-device": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-device@~1.1.5"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-inappbrowser": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-inappbrowser@~1.7.0"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-file": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-file@~4.3.2"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-compat": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-compat"
+        },
+        "is_top_level": false,
+        "variables": {}
+    },
+    "ionic-plugin-keyboard": {
+        "source": {
+            "type": "registry",
+            "id": "ionic-plugin-keyboard@~2.2.1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-splashscreen": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-splashscreen@~4.0.2"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-whitelist": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-whitelist@~1.3.2"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-statusbar": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-statusbar@~2.2.2"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "onymos-plugin-access": {
+        "source": {
+            "type": "local",
+            "path": "onymos_components/onymos-plugin-access"
+        },
+        "is_top_level": true,
+        "variables": {
+            "IOS_URL_SCHEME": "com.googleusercontent.apps.889502478160-25hq8b1mg5h65tmi326ku20hvjujo9mh"
+        }
+    },
+    "onymos-plugin-chat": {
+        "source": {
+            "type": "local",
+            "path": "onymos_components/onymos-plugin-chat"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "onymos-plugin-contacts": {
+        "source": {
+            "type": "local",
+            "path": "onymos_components/onymos-plugin-contacts"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "onymos-plugin-digime": {
+        "source": {
+            "type": "local",
+            "path": "onymos_components/onymos-plugin-digime"
+        },
+        "is_top_level": true,
+        "variables": {
+            "APP_ID": "Tinderest",
+            "CONTRACT_ID": "apm6txyF3f7jwevEQDnm5XYWTrqNblgi",
+            "P12_STORE": "digime2y.p12"
+        }
+    },
+    "onymos-plugin-media": {
+        "source": {
+            "type": "local",
+            "path": "onymos_components/onymos-plugin-media"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "onymos-plugin-util": {
+        "source": {
+            "type": "local",
+            "path": "onymos_components/onymos-plugin-util"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-file-transfer": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/apache/cordova-plugin-file-transfer",
+            "subdir": "."
+        },
+        "is_top_level": false,
+        "variables": {}
+    }
+}

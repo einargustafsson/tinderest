@@ -9,13 +9,15 @@ vaccinations <- c("Cholera", "Dengue", "Diphtheria", "Hepatitis A", "Hepatitis B
 
 
 # Restaurants in Mumbai ---------------------------------------------------
-# Get Restaurants in Mumbai from ght Google Places API
+
+# Get Restaurants from the Google Places API
 if (!exists('google_api_key')) google_api_key <- readline('insert api-key')
 mumbai_places <- paste0('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=19.0613878,72.8604882&radius=500&types=food&name=restaurant&key=', google_api_key) %>% 
   utils::URLencode() %>% 
   fromJSON()
 mumbai_restaurants <- mumbai_places$results
-# Flatten json-lists to be a clean table
+
+# Flatten json-lists to have a clean table
 mumbai_restaurants$geometry <- paste(unlist(mumbai_restaurants$geometry), collapse=',')
 mumbai_restaurants$opening_hours <- paste(unlist(mumbai_restaurants$opening_hours), collapse=',')
 

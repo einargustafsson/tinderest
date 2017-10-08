@@ -1,14 +1,21 @@
 library(jsonlite)
 library(dplyr)
+library(utils)
 set.seed(12333)
 
-# Emperical data ----------------------------------------------------------
+# Subset of allergies and vaccinations ------------------------------------
 allergies <- c('shellfish', 'milk', 'peanuts') # 'nuts', 'soy', 'wheat', 'corn')
 vaccinations <- c("Cholera", "Dengue", "Diphtheria", "Hepatitis A", "Hepatitis B", "Hepatitis E", "Haemophilus influenzae type b (Hib)", "Human papillomavirus (HPV)", "Influenza", "Japanese encephalitis", "Malaria", "Measles", "Meningococcal meningitis", "Mumps", "Pertussis", "Pneumococcal disease", "Poliomyelitis", "Rabies", "Rotavirus", "Rubella", "Tetanus", "Tick-borne encephalitis", "Tuberculosis", "Typhoid", "Varicella", "Yellow Fever")
-# Load Google API export of Mumbai restaurants
-mumbai_restaurants <- fromJSON('db/mumbai_restaurants.json')
-mumbai_restaurants <- mumbai_restaurants$results
-# Flatten json-lists to table
+
+
+# Restaurants in Mumbai ---------------------------------------------------
+# Get Restaurants in Mumbai from ght Google Places API
+if (!exists('google_api_key')) google_api_key <- readline('insert api-key')
+mumbai_places <- paste0('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=19.0613878,72.8604882&radius=500&types=food&name=restaurant&key=', google_api_key) %>% 
+  utils::URLencode() %>% 
+  fromJSON()
+mumbai_restaurants <- mumbai_places$results
+# Flatten json-lists to be a clean table
 mumbai_restaurants$geometry <- paste(unlist(mumbai_restaurants$geometry), collapse=',')
 mumbai_restaurants$opening_hours <- paste(unlist(mumbai_restaurants$opening_hours), collapse=',')
 
@@ -39,9 +46,11 @@ make_user <- function(allergies, vaccinations, restaurants) {
     vaccinations = pick_from_list(vaccinations, 2, 7)
   )
   user$financeCategory <- sample(1:4, 1)
-  user$restaurantVisits <- pick_restaurants(restaurants, 
-                                           user$health$allergies, 
-                                           2, 10)
+  if (!is.null(nrow(restaurants))) {
+    user$restaurantVisits <- pick_restaurants(restaurants, 
+                                              user$health$allergies, 
+                                              2, 10)
+  }
   return(user)
 }
 
@@ -61,5 +70,9 @@ for (i in 1:users) {
                             vaccinations, 
                             mumbai_restaurants)
 }
+cat(toJSON(user_db), file = sprintf('db/user_db_%i.json', users))
 
-cat(toJSON(user_db), file = sprintf('user_db_%i.json', users))
+# Create one app user
+app_user <- make_user(allergies, vaccinations, restaurants = NA)
+cat(toJSON(app_user), file = 'db/app_user.json')
+

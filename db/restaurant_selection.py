@@ -157,7 +157,7 @@ for i in range(m):
 
 ## import test data here ##
 
-with open('app_user_milk.json') as json_app:
+with open('app_user_333036252530.json') as json_app:
 	dapp = json.load(json_app)	#dict
 	h_app = dapp['health']
 	al_app = h_app['allergies']

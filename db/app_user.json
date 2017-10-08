@@ -1,0 +1,15 @@
+{
+  "key": [361527263885],
+  "agegroup": [2],
+  "health": {
+    "allergies": ["shellfish"],
+    "vaccinations": [
+      "Mumps",
+      "Human papillomavirus (HPV)",
+      "Tuberculosis",
+      "Meningococcal meningitis",
+      "Haemophilus influenzae type b (Hib)"
+    ]
+  },
+  "financeCategory": [1]
+}
